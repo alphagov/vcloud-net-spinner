@@ -1,0 +1,49 @@
+PATH
+  remote: .
+  specs:
+    vcloud_network_configurator (0.1.0)
+      highline
+      nokogiri (~> 1.5.0)
+      parallel
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.3.5)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
+    diff-lcs (1.1.3)
+    equivalent-xml (0.2.9)
+      nokogiri (>= 1.4.3)
+    highline (1.6.19)
+    metaclass (0.0.1)
+    minitest (5.0.6)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
+    nokogiri (1.5.10)
+    parallel (0.7.1)
+    rake (10.1.0)
+    rspec (2.11.0)
+      rspec-core (~> 2.11.0)
+      rspec-expectations (~> 2.11.0)
+      rspec-mocks (~> 2.11.0)
+    rspec-core (2.11.1)
+    rspec-expectations (2.11.3)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.11.3)
+    safe_yaml (0.9.4)
+    webmock (1.13.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  equivalent-xml (~> 0.2.9)
+  minitest
+  mocha
+  rake
+  rspec (~> 2.11.0)
+  vcloud_network_configurator!
+  webmock

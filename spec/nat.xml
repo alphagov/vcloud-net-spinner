@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EdgeGatewayServiceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.vmware.com/vcloud/v1.5" xsi:schemaLocation="http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd">
+  <NatService>
+    <IsEnabled>true</IsEnabled>
+    <NatRule>
+      <RuleType>SNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65538</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>172.10.0.0/8</OriginalIp>
+        <TranslatedIp>200.11.99.70</TranslatedIp>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65539</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.70</OriginalIp>
+        <OriginalPort>22</OriginalPort>
+        <TranslatedIp>172.10.0.100</TranslatedIp>
+        <TranslatedPort>22</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65540</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.72</OriginalIp>
+        <OriginalPort>443</OriginalPort>
+        <TranslatedIp>172.16.0.2</TranslatedIp>
+        <TranslatedPort>443</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65537</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.70</OriginalIp>
+        <OriginalPort>80</OriginalPort>
+        <TranslatedIp>172.10.0.3</TranslatedIp>
+        <TranslatedPort>80</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65542</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/a7053ce3-b0bb-4018-99b1-76338f0a12dc" name="Backend" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.70</OriginalIp>
+        <OriginalPort>1022</OriginalPort>
+        <TranslatedIp>172.10.0.200</TranslatedIp>
+        <TranslatedPort>22</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65543</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.74</OriginalIp>
+        <OriginalPort>443</OriginalPort>
+        <TranslatedIp>172.16.0.2</TranslatedIp>
+        <TranslatedPort>443</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65544</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.75</OriginalIp>
+        <OriginalPort>80</OriginalPort>
+        <TranslatedIp>172.10.0.20</TranslatedIp>
+        <TranslatedPort>80</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65545</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.76</OriginalIp>
+        <OriginalPort>80</OriginalPort>
+        <TranslatedIp>172.10.0.21</TranslatedIp>
+        <TranslatedPort>80</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65546</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.75</OriginalIp>
+        <OriginalPort>443</OriginalPort>
+        <TranslatedIp>172.16.0.2</TranslatedIp>
+        <TranslatedPort>443</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65547</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.76</OriginalIp>
+        <OriginalPort>443</OriginalPort>
+        <TranslatedIp>172.16.0.2</TranslatedIp>
+        <TranslatedPort>443</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+    <NatRule>
+      <RuleType>DNAT</RuleType>
+      <IsEnabled>true</IsEnabled>
+      <Id>65548</Id>
+      <GatewayNatRule>
+        <Interface href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data" type="application/vnd.vmware.admin.network+xml"/>
+        <OriginalIp>200.11.99.70</OriginalIp>
+        <OriginalPort>443</OriginalPort>
+        <TranslatedIp>172.16.5.0</TranslatedIp>
+        <TranslatedPort>443</TranslatedPort>
+        <Protocol>tcp</Protocol>
+      </GatewayNatRule>
+    </NatRule>
+  </NatService>
+</EdgeGatewayServiceConfiguration>
