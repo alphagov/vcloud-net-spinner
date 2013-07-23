@@ -17,6 +17,7 @@ module Gds
     def parse args
       optparser = OptionParser.new do |o|
         o.banner = "Usage: config_edge_gateway [options] API_URL"
+        o.summary_width = 40
 
         o.on("-u", "--username=U", String, "Vcloud Username") do |v|
           @options[:username] = v
@@ -26,11 +27,12 @@ module Gds
           @options[:password] = v
         end
 
-        o.on("-e", "--env=E", ["preview", "staging", "production"], "Environment: preview | staging | production") do |v|
+        o.on("-e", "--env=E", ["preview", "staging", "production"],
+             "Environment: preview | staging | production") do |v|
           @options[:environment] = v
         end
 
-        o.on("-U", "--organization-edgegateway-uuid",
+        o.on("-U", "--organization-edgegateway-uuid=U",
              "UID: This is required to configure edgegateway services. For more info refer to docs/find_organisation_edgegateway_uuid") do |v|
           @options[:org_edgedateway_uuid] = v
         end
@@ -43,13 +45,16 @@ module Gds
           @options[:organization] = v
         end
 
+        o.on("-d", "--rule-directory=d", "Rules Directory: From where to read the NAT/Firewal/LB rules") do |v|
+          @options[:rules_directory] = v
+        end
       end
 
       optparser.parse!(@args)
       if !args.empty?
         @options[:api_url] = args[0]
       else
-        raise Exception
+        raise Exception.new("No API_URL provided. See help for more details")
       end
 
       @options[:organization] ||= @options[:environment]

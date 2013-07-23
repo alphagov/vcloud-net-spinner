@@ -1,15 +1,15 @@
 require "net/http"
 module Gds
   class VcloudConfigureRequest
-    def initialize vcloud_url, auth_header, environment, component
+    def initialize vcloud_url, auth_header, environment, component, rules_directory
       @auth_header = auth_header
       @config_url =  vcloud_url.edge_gateway_config_url
       @environment = environment
       @component = component
-      require "#{@environment}/interfaces"
+      require "#{rules_directory}/#{@environment}/interfaces"
 
-      require "common_#{component}.rb"
-      require "#{@environment}/#{component}"
+      require "#{rules_directory}/common_#{component}.rb"
+      require "#{rules_directory}/#{@environment}/#{component}"
     end
 
     def components
