@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "gds/vcloud_network_configurator/version"
+require "vcloud_network_configurator/version"
 
 Gem::Specification.new do |s|
   s.name        = "vcloud_network_configurator"
-  s.version     = Gds::VERSION
+  s.version     = VERSION
   s.authors     = ["Garima Singh"]
   s.email       = ["igarimasingh@gmail.com"]
   s.homepage    = "https://github.com/alphagov/vcloud_network_configurator"

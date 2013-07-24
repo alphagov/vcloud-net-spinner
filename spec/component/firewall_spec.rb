@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'nokogiri'
 require 'equivalent-xml'
 require 'component/firewall'
-#require 'edgegateway/production/interfaces'
 
 module Component
   describe "firewall" do

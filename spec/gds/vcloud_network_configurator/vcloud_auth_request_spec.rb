@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'gds/vcloud_network_configurator/vcloud_auth_request'
+require 'vcloud_network_configurator/vcloud_auth_request'
 
 module Gds
   describe VcloudAuthRequest do

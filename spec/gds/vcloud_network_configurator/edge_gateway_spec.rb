@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'gds/vcloud_network_configurator/edge_gateway'
+require 'vcloud_network_configurator/edge_gateway'
 
 module Gds
   describe EdgeGateway do
