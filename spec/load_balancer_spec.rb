@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'nokogiri'
 require 'equivalent-xml'
 require 'load_balancer'
-#require 'edgegateway/production/interfaces'
+
 
 describe "load balancer" do
   it "should be able to generate XML that matches what we created directly through the control panel" do
@@ -13,8 +13,8 @@ describe "load balancer" do
           https :health_check_port => 9401
         end
 
-        virtual_server :name => "Signonotron public", :interface => "Client Data", :ip => "200.11.99.71"
-        virtual_server :name => "Signonotron internal", :interface => "Backend", :ip => "172.16.1.1"
+        virtual_server :name => "Signonotron public", :interface => "TestData", :ip => "200.11.99.71"
+        virtual_server :name => "Signonotron internal", :interface => "TestData", :ip => "172.16.1.1"
       end
 
       configure "Search" do
@@ -23,7 +23,7 @@ describe "load balancer" do
           https :health_check_port => 9409
         end
 
-        virtual_server :name => "Search internal", :interface => "Frontend", :ip => "172.12.1.3"
+        virtual_server :name => "Search internal", :interface => "TestData", :ip => "172.12.1.3"
       end
 
       configure "Static" do
@@ -32,7 +32,7 @@ describe "load balancer" do
           https :health_check_port => 9413
         end
 
-        virtual_server :name => "Static internal", :interface => "Frontend", :ip => "172.12.1.2"
+        virtual_server :name => "Static internal", :interface => "TestData", :ip => "172.12.1.2"
       end
 
       configure "Frontend" do
@@ -41,7 +41,7 @@ describe "load balancer" do
           https :health_check_port => 9405
         end
 
-        virtual_server :name => "Frontend internal", :interface => "Frontend", :ip => "172.12.1.4"
+        virtual_server :name => "Frontend internal", :interface => "TestData", :ip => "172.12.1.4"
       end
 
       configure "Smartanswers" do
@@ -50,7 +50,7 @@ describe "load balancer" do
             https :health_check_port => 9410
         end
 
-        virtual_server :name => "Smartanswers internal", :interface => "Frontend", :ip => "172.12.1.5"
+        virtual_server :name => "Smartanswers internal", :interface => "TestData", :ip => "172.12.1.5"
       end
 
       configure "Router" do
@@ -59,7 +59,7 @@ describe "load balancer" do
             https
         end
 
-        virtual_server :name => "Router public", :interface => "Client Data", :ip => "200.11.99.73"
+        virtual_server :name => "Router public", :interface => "TestData", :ip => "200.11.99.73"
       end
 
       configure "Calendars" do
@@ -68,7 +68,7 @@ describe "load balancer" do
             https :health_check_port => 9411
         end
 
-        virtual_server :name => "Calendars internal", :interface => "Frontend", :ip => "172.12.1.1"
+        virtual_server :name => "Calendars internal", :interface => "TestData", :ip => "172.12.1.1"
       end
 
       configure "router-internal" do
@@ -77,7 +77,7 @@ describe "load balancer" do
             https :enabled => false
         end
 
-        virtual_server :name => "Router internal", :interface => "Router", :ip => "172.11.1.1"
+        virtual_server :name => "Router internal", :interface => "TestData", :ip => "172.11.1.1"
       end
 
       configure "EFG" do
@@ -86,7 +86,7 @@ describe "load balancer" do
             https :health_check_port => 9419
         end
 
-        virtual_server :name => "EFG public", :interface => "Client Data", :ip => "200.11.99.77"
+        virtual_server :name => "EFG public", :interface => "TestData", :ip => "200.11.99.77"
       end
     end
 
@@ -96,8 +96,8 @@ describe "load balancer" do
   it "should blow up if pool is not defined before virtual server" do
     expect  { load_balancer do
       configure "Signonotron" do
-        virtual_server :name => "Signonotron public", :interface => "Client Data", :ip => "200.11.99.71"
-        virtual_server :name => "Signonotron internal", :interface => "Backend", :ip => "172.16.1.1"
+        virtual_server :name => "Signonotron public", :interface => "TestData", :ip => "200.11.99.71"
+        virtual_server :name => "Signonotron internal", :interface => "TestData", :ip => "172.16.1.1"
       end
     end }.to raise_error
   end

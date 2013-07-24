@@ -13,7 +13,7 @@ describe "firewall" do
          destination :ip => "external",      :port => "Any"
       end
 
-      rule "ssh access to jumpbox1",           :protocols => [:tcp] do
+      rule "ssh access to jumpbox1", :protocols => [:tcp] do
          source      :ip => "Any",           :port => "Any"
          destination :ip => "200.11.99.70", :port => 22
       end

@@ -11,8 +11,8 @@ module Gds
       end
 
       it "should return response received" do
-        vcloud_url = VcloudUrl.new({ :url => "https://www.foo.bar" })
-        request = VcloudAuthRequest.new vcloud_url, "super", "man"
+        vcloud_settings = VcloudSettings.new({ :url => "https://www.foo.bar" })
+        request = VcloudAuthRequest.new vcloud_settings, "super", "man"
 
         request.submit.code.should == "200"
       end

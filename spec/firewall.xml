@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <EdgeGatewayServiceConfiguration xmlns="http://www.vmware.com/vcloud/v1.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd">
-            <FirewallService>
-                <IsEnabled>true</IsEnabled>
-                <DefaultAction>drop</DefaultAction>
-                <LogDefaultAction>false</LogDefaultAction>
-                <FirewallRule>
-                    <Id>1</Id>
-                    <IsEnabled>true</IsEnabled>
-                    <MatchOnTranslate>false</MatchOnTranslate>
-                    <Description>Oubound Traffic</Description>
-                    <Policy>allow</Policy>
-                    <Protocols>
-                        <Tcp>true</Tcp>
-                        <Udp>true</Udp>
-                    </Protocols>
-                    <Port>-1</Port>
-                    <DestinationPortRange>Any</DestinationPortRange>
-                    <DestinationIp>external</DestinationIp>
-                    <SourcePort>-1</SourcePort>
-                    <SourcePortRange>Any</SourcePortRange>
-                    <SourceIp>Any</SourceIp>
-                    <EnableLogging>false</EnableLogging>
-                </FirewallRule>
-                <FirewallRule>
-                    <Id>2</Id>
-                    <IsEnabled>true</IsEnabled>
-                    <MatchOnTranslate>false</MatchOnTranslate>
-                    <Description>ssh access to jumpbox1</Description>
-                    <Policy>allow</Policy>
-                    <Protocols>
-                        <Tcp>true</Tcp>
-                    </Protocols>
-                    <Port>22</Port>
-                    <DestinationPortRange>22</DestinationPortRange>
-                    <DestinationIp>200.11.99.70</DestinationIp>
-                    <SourcePort>-1</SourcePort>
-                    <SourcePortRange>Any</SourcePortRange>
-                    <SourceIp>Any</SourceIp>
-                    <EnableLogging>false</EnableLogging>
-                </FirewallRule>                
-            </FirewallService>
-        </EdgeGatewayServiceConfiguration>
+<EdgeGatewayServiceConfiguration xmlns="http://www.vmware.com/vcloud/v1.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd">
+  <FirewallService>
+    <IsEnabled>true</IsEnabled>
+    <DefaultAction>drop</DefaultAction>
+    <LogDefaultAction>false</LogDefaultAction>
+    <FirewallRule>
+      <Id>1</Id>
+      <IsEnabled>true</IsEnabled>
+      <MatchOnTranslate>false</MatchOnTranslate>
+      <Description>Oubound Traffic</Description>
+      <Policy>allow</Policy>
+      <Protocols>
+        <Tcp>true</Tcp>
+        <Udp>true</Udp>
+      </Protocols>
+      <Port>-1</Port>
+      <DestinationPortRange>Any</DestinationPortRange>
+      <DestinationIp>external</DestinationIp>
+      <SourcePort>-1</SourcePort>
+      <SourcePortRange>Any</SourcePortRange>
+      <SourceIp>Any</SourceIp>
+      <EnableLogging>false</EnableLogging>
+    </FirewallRule>
+    <FirewallRule>
+      <Id>2</Id>
+      <IsEnabled>true</IsEnabled>
+      <MatchOnTranslate>false</MatchOnTranslate>
+      <Description>ssh access to jumpbox1</Description>
+      <Policy>allow</Policy>
+      <Protocols>
+        <Tcp>true</Tcp>
+      </Protocols>
+      <Port>22</Port>
+      <DestinationPortRange>22</DestinationPortRange>
+      <DestinationIp>200.11.99.70</DestinationIp>
+      <SourcePort>-1</SourcePort>
+      <SourcePortRange>Any</SourcePortRange>
+      <SourceIp>Any</SourceIp>
+      <EnableLogging>false</EnableLogging>
+    </FirewallRule>
+  </FirewallService>
+</EdgeGatewayServiceConfiguration>

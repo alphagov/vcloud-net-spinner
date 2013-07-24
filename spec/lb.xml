@@ -893,7 +893,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Signonotron public</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>200.11.99.71</IpAddress>
       <ServiceProfile>
         <IsEnabled>false</IsEnabled>
@@ -925,7 +925,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Signonotron internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/a7053ce3-b0bb-4018-99b1-76338f0a12dc" name="Backend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.16.1.1</IpAddress>
       <ServiceProfile>
         <IsEnabled>false</IsEnabled>
@@ -957,7 +957,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Search internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/03806fbc-6242-431e-b93c-940f824e3cf2" name="Frontend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.12.1.3</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -989,7 +989,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Static internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/03806fbc-6242-431e-b93c-940f824e3cf2" name="Frontend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.12.1.2</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1021,7 +1021,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Frontend internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/03806fbc-6242-431e-b93c-940f824e3cf2" name="Frontend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.12.1.4</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1053,7 +1053,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Smartanswers internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/03806fbc-6242-431e-b93c-940f824e3cf2" name="Frontend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.12.1.5</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1085,7 +1085,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Router public</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>200.11.99.73</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1117,7 +1117,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Calendars internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/03806fbc-6242-431e-b93c-940f824e3cf2" name="Frontend"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.12.1.1</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1149,7 +1149,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>Router internal</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1f5b617f-ddc7-4813-92d3-eed36610a2f8" name="Router"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>172.11.1.1</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
@@ -1181,7 +1181,7 @@
     <VirtualServer>
       <IsEnabled>true</IsEnabled>
       <Name>EFG public</Name>
-      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/sdb823hdfiqusd19ud9qwdh9qhwd" name="Client Data"/>
+      <Interface type="application/vnd.vmware.vcloud.orgVdcNetwork+xml" href="https://vendor-api-url.net/admin/network/1000" name="TestData"/>
       <IpAddress>200.11.99.77</IpAddress>
       <ServiceProfile>
         <IsEnabled>true</IsEnabled>
