@@ -1,5 +1,5 @@
 module Gds
-  class VcloudUrl
+  class VcloudSettings
 
     def initialize options = {}
       @api_url = options[:url]

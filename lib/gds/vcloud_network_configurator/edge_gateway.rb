@@ -6,17 +6,17 @@ module Gds
   class EdgeGateway
     def initialize options
       @options = options
-      @vcloud_url = VcloudUrl.new( { url: @options[:api_url], edge_gateway_uuid: @option[:org_edgedateway_uuid] } )
+      @vcloud_settings = VcloudSettings.new( { url: @options[:api_url], edge_gateway_uuid: @options[:org_edgedateway_uuid] } )
     end
 
     def apply_configuration
-      auth_response = VcloudAuthRequest.new(@vcloud_url, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password]).submit
+      auth_response = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password]).submit
       if(auth_response.code != "200")
         abort("Could not authenticate user")
       end
 
       auth_header = auth_response["x-vcloud-authorization"]
-      configure_response = VcloudConfigureRequest.new(@vcloud_url, auth_header, @options[:environment], @options[:component], @options[:rules_directory]).submit
+      configure_response = VcloudConfigureRequest.new(@vcloud_settings, auth_header, @options[:environment], @options[:component], @options[:rules_directory]).submit
 
       if configure_response.code == "202"
         check_for_success auth_header, ConfigureTask.new(configure_response.body)

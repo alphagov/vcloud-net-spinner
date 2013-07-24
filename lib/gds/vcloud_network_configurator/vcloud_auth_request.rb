@@ -1,18 +1,18 @@
 require "net/http"
-require "gds/vcloud_network_configurator/vcloud_url"
+require "gds/vcloud_network_configurator/vcloud_settings"
 
 module Gds
   class VcloudAuthRequest
 
-    def initialize vcloud_url, username, password
+    def initialize vcloud_settings, username, password
       @user_name = username
       @password = password
-      @vcloud_url = vcloud_url
+      @vcloud_settings = vcloud_settings
     end
 
     def submit
-      puts "Submitting auth request at #{@vcloud_url.sessions_url}\n"
-      url = URI(@vcloud_url.sessions_url)
+      puts "Submitting auth request at #{@vcloud_settings.sessions_url}\n"
+      url = URI(@vcloud_settings.sessions_url)
       request = Net::HTTP::Post.new url.request_uri
       request['Accept'] = 'application/*+xml;version=5.1'
       request.basic_auth @user_name, @password

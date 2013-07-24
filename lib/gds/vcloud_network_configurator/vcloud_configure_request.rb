@@ -1,9 +1,9 @@
 require "net/http"
 module Gds
   class VcloudConfigureRequest
-    def initialize vcloud_url, auth_header, environment, component, rules_directory
+    def initialize vcloud_settings, auth_header, environment, component, rules_directory
       @auth_header = auth_header
-      @config_url =  vcloud_url.edge_gateway_config_url
+      @config_url =  vcloud_settings.edge_gateway_config_url
       @environment = environment
       @component = component
       require "#{rules_directory}/#{@environment}/interfaces"
