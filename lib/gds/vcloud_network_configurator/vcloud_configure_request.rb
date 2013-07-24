@@ -24,7 +24,7 @@ module Gds
       request['Content-Type'] = VcloudSettings.request_headers['Content-Type']
       request['x-vcloud-authorization'] = @auth_header
 
-      request.body = Kernel.const_get(components[@component]).generate_xml.to_xml
+      request.body = Kernel.const_get("Component").const_get(components[@component]).generate_xml.to_xml
 
       puts "Reading configuration from #{@config_file}"
       puts "Submitting request at #{@config_url}\n"

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'nokogiri'
 require 'equivalent-xml'
-require 'load_balancer'
+require 'component/load_balancer'
 
 
 describe "load balancer" do
@@ -46,7 +46,7 @@ describe "load balancer" do
 
     end
 
-    Nokogiri::XML(LoadBalancer.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/lb.xml"))
+    Nokogiri::XML(Component::LoadBalancer.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/lb.xml"))
   end
 
   it "should blow up if pool is not defined before virtual server" do

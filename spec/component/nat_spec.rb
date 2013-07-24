@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'nokogiri'
 require 'equivalent-xml'
-require 'nat'
+require 'component/nat'
 
 describe "nat" do
 
@@ -20,6 +20,6 @@ describe "nat" do
       dnat :interface => "TestData", :original => { :ip => "200.11.99.70", :port => 443 }, :translated => { :ip => "172.16.5.0", :port => 443 }, :id => 65548
     end
 
-    Nokogiri::XML(NAT.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/nat.xml"))
+    Nokogiri::XML(Component::NAT.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/nat.xml"))
   end
 end

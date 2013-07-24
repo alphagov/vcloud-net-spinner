@@ -1,4 +1,7 @@
 require 'optparse'
+require 'component/firewall'
+require 'component/load_balancer'
+require 'component/nat'
 require 'gds/vcloud_network_configurator/edge_gateway'
 
 module Gds
