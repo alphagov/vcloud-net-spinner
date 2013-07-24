@@ -34,7 +34,7 @@ module Gds
 
         o.on("-U", "--organization-edgegateway-uuid=U",
              "UID: This is required to configure edgegateway services. For more info refer to docs/find_organisation_edgegateway_uuid") do |v|
-          @options[:org_edgedateway_uuid] = v
+          @options[:org_edgegateway_uuid] = v
         end
 
         o.on("-c", "--component=c", ["lb", "firewall", "nat"], "Environment: lb|firewall|nat") do |v|

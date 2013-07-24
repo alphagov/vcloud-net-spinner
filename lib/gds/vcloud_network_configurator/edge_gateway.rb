@@ -6,7 +6,7 @@ module Gds
   class EdgeGateway
     def initialize options
       @options = options
-      @vcloud_settings = VcloudSettings.new( { url: @options[:api_url], edge_gateway_uuid: @options[:org_edgedateway_uuid] } )
+      @vcloud_settings = VcloudSettings.new( { url: @options[:api_url], edge_gateway_uuid: @options[:org_edgegateway_uuid] } )
     end
 
     def apply_configuration
