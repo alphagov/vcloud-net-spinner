@@ -74,3 +74,44 @@ A particular rules directory structure could be as follows.
 
   TODO: This needs to be just a json or a yaml
 
+
+### DSL
+
+#### Firewall
+
+    firewall do
+      rule "<description>" do
+         source      :ip => "172.10.0.0/8"
+         destination :ip => "172.10.0.5", :port => 4567
+      end
+    end
+
+#### NAT
+
+    nat do
+        snat :interface => "<key-from-interfaces.rb>", :original => { :ip => "internal-ip" }, :translated => { :ip => "external-ip" }, :desc => "description"
+        dnat :interface => "<key-from-interfaces.rb>", :original => { :ip => "external-ip", :port => 22 }, :translated => { :ip => "internal-ip", :port => 22 },  :desc => "SSH"
+    end
+
+
+#### Load Balancer
+
+    load_balancer do
+      configure "description-1" do
+        pool ["<ip-1>", "<ip-2>"] do
+          http
+          https
+        end
+
+        virtual_server :name => "description-1", :interface => "<key-from-interfaces.rb>", :ip => "<vse-ip>"
+      end
+
+      configure "description-2" do
+        pool ["<ip-1>", "<ip-2>", "<ip-3>"] do
+          http :port => 8080, :health_check_path => "</router/healthcheck>"
+          https
+        end
+
+        virtual_server :name => "description-2", :interface => "<key-from-interfaces.rb>", :ip => "<vse-ip>"
+      end
+    end
