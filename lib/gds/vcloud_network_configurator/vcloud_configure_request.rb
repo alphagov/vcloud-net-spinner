@@ -6,6 +6,7 @@ module Gds
       @config_url =  vcloud_settings.edge_gateway_config_url
       @environment = environment
       @component = component
+      @response = nil
       require "#{rules_directory}/#{@environment}/interfaces"
 
       require "#{rules_directory}/common_#{component}.rb"
@@ -19,8 +20,8 @@ module Gds
     def submit
       url = URI(@config_url)
       request = Net::HTTP::Post.new url.request_uri
-      request['Accept'] = 'application/*+xml;version=5.1'
-      request['Content-Type'] = 'application/vnd.vmware.admin.edgeGatewayServiceConfiguration+xml'
+      request['Accept'] = VcloudSettings.request_headers['Accept']
+      request['Content-Type'] = VcloudSettings.request_headers['Content-Type']
       request['x-vcloud-authorization'] = @auth_header
 
       request.body = Kernel.const_get(components[@component]).generate_xml.to_xml
@@ -36,7 +37,15 @@ module Gds
 
       puts "HTTP #{response.code}"
       puts response
-      return response
+      @response = response
+    end
+
+    def success?
+      @response.code == "202"
+    end
+
+    def response_body
+      @response.body
     end
   end
 end

@@ -10,22 +10,27 @@ module Gds
     end
 
     def apply_configuration
-      auth_response = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password]).submit
-      if(auth_response.code != "200")
-        abort("Could not authenticate user")
-      end
+      auth_header = authorize_request
+      configure_request = VcloudConfigureRequest.new(@vcloud_settings, auth_header, @options[:environment], @options[:component], @options[:rules_directory])
+      configure_request.submit
 
-      auth_header = auth_response["x-vcloud-authorization"]
-      configure_response = VcloudConfigureRequest.new(@vcloud_settings, auth_header, @options[:environment], @options[:component], @options[:rules_directory]).submit
-
-      if configure_response.code == "202"
-        check_for_success auth_header, ConfigureTask.new(configure_response.body)
+      if configure_request.success?
+        check_for_success auth_header, ConfigureTask.new(configure_request.response_body)
       else
         puts "Failed to configure the edge gateway"
       end
     end
 
     private
+    def authorize_request
+      auth_response = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password]).submit
+      if(auth_response.code != "200")
+        abort("Could not authenticate user")
+      end
+
+      auth_response["x-vcloud-authorization"]
+    end
+
     def check_for_success auth_header, configure_task
       begin
         puts "\n\n\nSleeping for 10 seconds before the next check for success \n\n\n"

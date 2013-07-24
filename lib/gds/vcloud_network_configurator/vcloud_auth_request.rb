@@ -8,13 +8,14 @@ module Gds
       @user_name = username
       @password = password
       @vcloud_settings = vcloud_settings
+      @response = nil
     end
 
     def submit
       puts "Submitting auth request at #{@vcloud_settings.sessions_url}\n"
       url = URI(@vcloud_settings.sessions_url)
       request = Net::HTTP::Post.new url.request_uri
-      request['Accept'] = 'application/*+xml;version=5.1'
+      request['Accept'] = VcloudSettings.request_headers['Accept']
       request.basic_auth @user_name, @password
       session = Net::HTTP.new(url.host, url.port)
       session.use_ssl = true
@@ -27,5 +28,6 @@ module Gds
       puts response
       return response
     end
+
   end
 end
