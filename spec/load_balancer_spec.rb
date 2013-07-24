@@ -26,33 +26,6 @@ describe "load balancer" do
         virtual_server :name => "Search internal", :interface => "TestData", :ip => "172.12.1.3"
       end
 
-      configure "Static" do
-        pool ["172.12.0.2", "172.12.0.3", "172.12.0.4"] do
-          http :health_check_port => 9513
-          https :health_check_port => 9413
-        end
-
-        virtual_server :name => "Static internal", :interface => "TestData", :ip => "172.12.1.2"
-      end
-
-      configure "Frontend" do
-        pool ["172.12.0.2", "172.12.0.3", "172.12.0.4"] do
-          http :health_check_port => 9505
-          https :health_check_port => 9405
-        end
-
-        virtual_server :name => "Frontend internal", :interface => "TestData", :ip => "172.12.1.4"
-      end
-
-      configure "Smartanswers" do
-        pool ["172.12.0.2", "172.12.0.3", "172.12.0.4"] do
-            http :health_check_port => 9510
-            https :health_check_port => 9410
-        end
-
-        virtual_server :name => "Smartanswers internal", :interface => "TestData", :ip => "172.12.1.5"
-      end
-
       configure "Router" do
         pool ["172.11.0.2", "172.11.0.3", "172.11.0.4"] do
             http
@@ -60,15 +33,6 @@ describe "load balancer" do
         end
 
         virtual_server :name => "Router public", :interface => "TestData", :ip => "200.11.99.73"
-      end
-
-      configure "Calendars" do
-        pool ["172.12.0.2", "172.12.0.3", "172.12.0.4"] do
-            http :health_check_port => 9511
-            https :health_check_port => 9411
-        end
-
-        virtual_server :name => "Calendars internal", :interface => "TestData", :ip => "172.12.1.1"
       end
 
       configure "router-internal" do
@@ -80,14 +44,6 @@ describe "load balancer" do
         virtual_server :name => "Router internal", :interface => "TestData", :ip => "172.11.1.1"
       end
 
-      configure "EFG" do
-        pool ["172.14.0.2"] do
-            http :health_check_port => 9519
-            https :health_check_port => 9419
-        end
-
-        virtual_server :name => "EFG public", :interface => "TestData", :ip => "200.11.99.77"
-      end
     end
 
     Nokogiri::XML(LoadBalancer.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/lb.xml"))
