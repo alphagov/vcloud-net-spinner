@@ -25,7 +25,15 @@ class VcloudAuthRequest
 
     puts "HTTP #{response.code}"
     puts response
-    return response
+    @response = response
+  end
+
+  def authenticated?
+    auth_response.code == "200"
+  end
+
+  def auth_response
+    @response
   end
 
 end

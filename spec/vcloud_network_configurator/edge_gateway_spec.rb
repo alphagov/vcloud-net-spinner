@@ -3,9 +3,9 @@ require 'vcloud_network_configurator/edge_gateway'
 
 describe EdgeGateway do
   it "should abort if vcloud api couldn't authenticate" do
-    auth_request = mock()
+    auth_request = mock(:authenticated? => false)
     VcloudAuthRequest.should_receive(:new).and_return(auth_request)
-    auth_request.should_receive(:submit).and_return(mock(:code => "400"))
+    auth_request.should_receive(:submit).and_return(mock())
 
     eg = EdgeGateway.new({:api_url => 'eggplant.com', :edge_gateway_uuid => '123321'})
     lambda { eg.apply_configuration }.should raise_error(SystemExit)
@@ -16,12 +16,10 @@ describe EdgeGateway do
     VcloudSettings.should_receive(:new).
       with({url: 'eggplant.com', edge_gateway_uuid: '123321' }).and_return(vs)
 
-    auth_request = mock()
+    auth_request = mock(:authenticated? => true, :submit => true)
     VcloudAuthRequest.should_receive(:new).with(vs, "bringle@gds-aubergine", "eggplant").
       and_return(auth_request)
-    auth_response = mock(:code => "200")
-    auth_response.should_receive(:[]).with('x-vcloud-authorization').and_return('123213')
-    auth_request.should_receive(:submit).and_return(auth_response)
+    auth_request.should_receive(:auth_response).and_return({'x-vcloud-authorization' => '123213'})
 
     VcloudConfigureRequest.should_receive(:new).
       with(vs, '123213', 'farm', 'firewall', 'path/to/dir').

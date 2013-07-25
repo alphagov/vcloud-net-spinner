@@ -23,12 +23,11 @@ class EdgeGateway
 
   private
   def authorize_request
-    auth_response = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password]).submit
-    if(auth_response.code != "200")
-      abort("Could not authenticate user")
-    end
+    auth_request = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password])
+    auth_request.submit
+    abort("Could not authenticate user") unless auth_request.authenticated?
 
-    auth_response["x-vcloud-authorization"]
+    auth_request.auth_response["x-vcloud-authorization"]
   end
 
   def check_for_success auth_header, configure_task
