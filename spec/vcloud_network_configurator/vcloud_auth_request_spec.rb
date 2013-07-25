@@ -13,7 +13,8 @@ describe VcloudAuthRequest do
       vcloud_settings = VcloudSettings.new({ :url => "https://www.foo.bar" })
       request = VcloudAuthRequest.new vcloud_settings, "super", "man"
 
-      request.submit.code.should == "200"
+      request.submit
+      request.should be_authenticated
     end
   end
 end
