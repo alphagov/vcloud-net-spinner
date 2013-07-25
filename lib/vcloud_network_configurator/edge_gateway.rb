@@ -16,8 +16,10 @@ class EdgeGateway
 
     if configure_request.success?
       check_for_success auth_header, ConfigureTask.new(configure_request.response_body)
+      return true
     else
       puts "Failed to configure the edge gateway"
+      return false
     end
   end
 
@@ -33,7 +35,7 @@ class EdgeGateway
   def check_for_success auth_header, configure_task
     begin
       puts "\n\n\nSleeping for 10 seconds before the next check for success \n\n\n"
-      sleep(10)
+      sleep(10) unless ENV['GEM_ENV'] == "test"
       response = VcloudCheckForConfigureTaskRequest.new(auth_header, configure_task.url).submit
 
       configure_task = ConfigureTask.new(response.body)

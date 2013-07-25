@@ -8,7 +8,6 @@ class VcloudCheckForConfigureTaskRequest
   end
 
   def submit
-
     url = URI(@task_url)
     request = Net::HTTP::Get.new url.request_uri
     request['Accept'] = 'application/*+xml;version=5.1'

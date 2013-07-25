@@ -5,6 +5,8 @@ $:.unshift File.join(specdir, '..')
 require 'webmock/rspec'
 require 'rspec'
 
+ENV["GEM_ENV"] = "test"
+
 def interfaces
   @interfaces ||= {
     "TestData" => "https://vendor-api-url.net/admin/network/1000"

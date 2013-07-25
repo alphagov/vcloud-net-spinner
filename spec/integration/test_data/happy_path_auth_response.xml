@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session
+    xmlns="http://www.vmware.com/vcloud/v1.5"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    href="https://vcloud.example.com/api/session/"
+    org="System"
+    type="application/vnd.vmware.vcloud.session+xml"
+    user="vcloud"
+    xsi:schemaLocation="http://www.vmware.com/vcloud/v1.5 http://https://vcloud.example.com/api/v1.5/schema/master.xsd">
+    <Link
+        href="https://vcloud.example.com/api/org/"
+        rel="down"
+        type="application/vnd.vmware.vcloud.orgList+xml"/>
+    <Link
+        href="https://vcloud.example.com/api/admin/"
+        rel="down"
+        type="application/vnd.vmware.admin.vcloud+xml"/>
+    <Link
+        href="https://vcloud.example.com/api/admin/extension"
+        rel="down"
+        type="application/vnd.vmware.admin.vmwExtension+xml"/>
+    <Link
+        href="https://vcloud.example.com/api/query"
+        rel="down"
+        type="application/vnd.vmware.vcloud.query.queryList+xml"/>
+    <Link
+        href="https://vcloud.example.com/api/entity/"
+        rel="entityResolver"
+        type="application/vnd.vmware.vcloud.entity+xml"/>
+</Session>
