@@ -44,12 +44,12 @@ A particular rules directory structure could be as follows.
         ├── common_nat.rb
         ├── env1
         │   ├── firewall.rb
-        │   ├── interfaces.rb
+        │   ├── interfaces.yaml
         │   ├── lb.rb
         │   └── nat.rb
         ├── env2
             ├── firewall.rb
-            ├── interfaces.rb
+            ├── interfaces.yaml
             ├── lb.rb
             └── nat.rb
 
@@ -63,17 +63,11 @@ A particular rules directory structure could be as follows.
   * Specific network rules => `env1/firewall.rb`, `env1/nat.rb`, `env1/lb.rb`
   * Common network rules => `./common_firewall.rb`, `./common_lb.rb`, `./common_lb.rb`
 
-* interfaces.rb file:
+* interfaces.yaml file:
 
-        def interfaces
-          @interfaces ||= {
-            "VDC-1" => "https://localhost:4567/api/admin/network/<vdc-network-uuid>",
-            "VDC-2" => "https://localhost:4567/api/admin/network/<vdc-network-uuid>",
-          }
-        end
-
-  TODO: This needs to be just a json or a yaml
-
+        interface:
+          VDC-1: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
+          VDC-2: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
 
 ### DSL
 
