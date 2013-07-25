@@ -54,7 +54,7 @@ def configure_nat_xml
       <IsEnabled>true</IsEnabled>
       <Id>65538</Id>
       <GatewayNatRule>
-        <Interface type="application/vnd.vmware.admin.network+xml" name="&lt;key-from-interfaces.rb&gt;" href=""/>
+        <Interface type="application/vnd.vmware.admin.network+xml" name="VDC-1" href="http://interface.vdc-1/19237"/>
         <OriginalIp>internal-ip</OriginalIp>
         <TranslatedIp>external-ip</TranslatedIp>
       </GatewayNatRule>
@@ -64,7 +64,7 @@ def configure_nat_xml
       <IsEnabled>true</IsEnabled>
       <Id>65539</Id>
       <GatewayNatRule>
-        <Interface type="application/vnd.vmware.admin.network+xml" name="&lt;key-from-interfaces.rb&gt;" href=""/>
+        <Interface type="application/vnd.vmware.admin.network+xml" name="VDC-1" href="http://interface.vdc-1/19237"/>
         <OriginalIp>external-ip</OriginalIp>
         <OriginalPort>22</OriginalPort>
         <TranslatedIp>internal-ip</TranslatedIp>

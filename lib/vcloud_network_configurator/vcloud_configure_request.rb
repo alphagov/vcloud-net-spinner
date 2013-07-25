@@ -7,7 +7,7 @@ class VcloudConfigureRequest
     @environment = environment
     @component = component
     @response = nil
-    require "#{rules_directory}/#{@environment}/interfaces"
+    @interfaces = YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces']
 
     require "#{rules_directory}/common_#{component}.rb"
     require "#{rules_directory}/#{@environment}/#{component}"
@@ -24,7 +24,7 @@ class VcloudConfigureRequest
     request['Content-Type'] = VcloudSettings.request_headers['Content-Type']
     request['x-vcloud-authorization'] = @auth_header
 
-    request.body = Kernel.const_get("Component").const_get(components[@component]).generate_xml.to_xml
+    request.body = Kernel.const_get("Component").const_get(components[@component]).generate_xml(@interfaces).to_xml
 
     puts "Reading configuration from #{@config_file}"
     puts "Submitting request at #{@config_url}\n"
