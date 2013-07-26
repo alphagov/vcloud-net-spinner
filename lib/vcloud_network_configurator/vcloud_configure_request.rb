@@ -1,4 +1,5 @@
 require "net/http"
+require 'yaml'
 
 class VcloudConfigureRequest
   def initialize vcloud_settings, auth_header, environment, component, rules_directory
