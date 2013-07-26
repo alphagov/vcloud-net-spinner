@@ -27,6 +27,9 @@ vcloud api.
         -o, --organization=o                     Organization: optional. Will default to environment
         -d, --rule-directory=d                   Rules Directory: From where to read the NAT/Firewal/LB rules
 
+  Note: organization maps to the organization name in vcloud. Whereas,
+        environment maps to your internal environment reference (e.g.
+        preview, qa, staging, production, etc)
 
 ### Example
 

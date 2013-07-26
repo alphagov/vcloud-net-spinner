@@ -25,7 +25,7 @@ class EdgeGateway
 
   private
   def authorize_request
-    auth_request = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@gds-#{@options[:organization]}", @options[:password])
+    auth_request = VcloudAuthRequest.new(@vcloud_settings, "#{@options[:username]}@#{@options[:organization]}", @options[:password])
     auth_request.submit
     abort("Could not authenticate user") unless auth_request.authenticated?
 

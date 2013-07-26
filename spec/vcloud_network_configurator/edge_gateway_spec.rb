@@ -32,7 +32,7 @@ describe EdgeGateway do
                           :username => 'bringle',
                           :password => 'eggplant',
                           :environment => 'farm',
-                          :organization => 'aubergine',
+                          :organization => 'gds-aubergine',
                           :component => 'firewall',
                           :rules_directory => 'path/to/dir',
     })
