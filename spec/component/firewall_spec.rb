@@ -5,6 +5,12 @@ require 'component/firewall'
 
 module Component
   describe "firewall" do
+    before :each do
+      @interfaces = {
+        "TestData" => "https://vendor-api-url.net/admin/network/1000"
+      }
+    end
+
     it "should be able to generate XML that matches what we created directly through the control panel" do
       Firewall.reset
       firewall do
@@ -19,7 +25,7 @@ module Component
         end
       end
 
-      Nokogiri::XML(Firewall.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/firewall.xml"))
+      Nokogiri::XML(Firewall.generate_xml(@interfaces).doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/firewall.xml"))
     end
 
     it "should default the protocol to tcp" do
@@ -61,7 +67,7 @@ module Component
         }
       end
 
-      Nokogiri::XML(Firewall.generate_xml.doc.root.to_s).should be_equivalent_to(expected.doc.root.to_s)
+      Nokogiri::XML(Firewall.generate_xml(@interfaces).doc.root.to_s).should be_equivalent_to(expected.doc.root.to_s)
     end
 
     it "should default the source to Any" do
@@ -103,7 +109,7 @@ module Component
         }
       end
 
-      Nokogiri::XML(Firewall.generate_xml.doc.root.to_s).should be_equivalent_to(expected.doc.root.to_s)
+      Nokogiri::XML(Firewall.generate_xml(@interfaces).doc.root.to_s).should be_equivalent_to(expected.doc.root.to_s)
     end
   end
 end

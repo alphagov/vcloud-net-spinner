@@ -20,6 +20,9 @@ describe "nat" do
       dnat :interface => "TestData", :original => { :ip => "200.11.99.70", :port => 443 }, :translated => { :ip => "172.16.5.0", :port => 443 }, :id => 65548
     end
 
-    Nokogiri::XML(Component::NAT.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/nat.xml"))
+    interfaces = {
+      "TestData" => "https://vendor-api-url.net/admin/network/1000"
+    }
+    Nokogiri::XML(Component::NAT.generate_xml(interfaces).doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/nat.xml"))
   end
 end

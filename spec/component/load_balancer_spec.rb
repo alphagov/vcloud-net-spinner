@@ -5,6 +5,12 @@ require 'component/load_balancer'
 
 
 describe "load balancer" do
+  before :each do
+    @interfaces = {
+      "TestData" => "https://vendor-api-url.net/admin/network/1000"
+    }
+  end
+
   it "should be able to generate XML that matches what we created directly through the control panel" do
     load_balancer do
       configure "Signonotron" do
@@ -46,7 +52,7 @@ describe "load balancer" do
 
     end
 
-    Nokogiri::XML(Component::LoadBalancer.generate_xml.doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/lb.xml"))
+    Nokogiri::XML(Component::LoadBalancer.generate_xml(@interfaces).doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/lb.xml"))
   end
 
   it "should blow up if pool is not defined before virtual server" do
