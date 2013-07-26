@@ -34,8 +34,8 @@ describe "load balancer" do
 
       configure "Router" do
         pool ["172.11.0.2", "172.11.0.3", "172.11.0.4"] do
-            http
-            https
+          http
+          https
         end
 
         virtual_server :name => "Router public", :interface => "TestData", :ip => "200.11.99.73"
@@ -43,8 +43,8 @@ describe "load balancer" do
 
       configure "router-internal" do
         pool ["172.11.0.2", "172.11.0.3", "172.11.0.4"] do
-            http :port => 8080, :health_check_path => "/router/management/status"
-            https :enabled => false
+          http :port => 8080, :health_check_path => "/router/management/status"
+          https :enabled => false
         end
 
         virtual_server :name => "Router internal", :interface => "TestData", :ip => "172.11.1.1"
