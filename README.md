@@ -17,7 +17,7 @@ vcloud api.
 
 ## Usage
 
-    Usage: config_edge_gateway.rb [options] API_URL
+    Usage: vcloud_configure_edge_gateway [options] API_URL
         -u, --username=U                         Vcloud Username
         -p, --password=P                         Vcloud Password
         -e, --env=E                              Environment: preview | staging | production
@@ -33,7 +33,7 @@ vcloud api.
 
 ### Example
 
-      config_edge_gateway.rb -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
+      vcloud_configure_edge_gateway -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
 
 ### Rules Directory
 
