@@ -7,7 +7,7 @@ describe "happy path" do
     WebMock.disable_net_connect!
     WebMock.reset!
 
-    session_url = "https://super%40gds-preview:man@www.vcloud.eggplant.com/sessions"
+    session_url = "https://super%40preview:man@www.vcloud.eggplant.com/sessions"
     edge_gateway_configure_url = "https://www.vcloud.eggplant.com/api/admin/edgeGateway/123321/action/configureServices"
     task_url = "https://www.vcloud.eggplant.com/api/tasks/10"
 

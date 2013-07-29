@@ -7,7 +7,7 @@ describe "happy path" do
     WebMock.disable_net_connect!
     WebMock.reset!
 
-    session_url = "https://super%40gds-preview:man@www.vcloud.eggplant.com/sessions"
+    session_url = "https://super%40preview:man@www.vcloud.eggplant.com/sessions"
 
     stub_request(:post, session_url).
       with(:headers => {'Accept'=>'application/*+xml;version=5.1', 'User-Agent'=>'Ruby'}).
