@@ -1,6 +1,6 @@
-# How to find Organisation Edgegateway UUID
+# How to find Network UUID for interfaces.yaml
 
-##Steps:
+## Steps
 
    * vcloud authorization
 
@@ -34,25 +34,23 @@
 
             <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml"
               name="Management - GDS Development (SL1)"
-              href="https://vendor-api-url.net/vdc/{org-code}"/>
+              href="https://vendor-api-url.net/vdc/{vdc-uuid}"/>
 
-   * Retrieve edgegateway record
+    * Get vdc details
 
-        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}="
+        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}"
           -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/admin/vdc/{management-edgegateway-uuid}/edgeGateways"
+          "https://vendor-api-url.net/vdc/{vdc-uuid}
 
-      * Response of the above is (from which you would need the id in the href attribute):
+      * This would provide you with available networks. From which you
+        can use the name and href attributes for adding to your
+        interfaces.yaml
 
-            <EdgeGatewayRecord vdc="https://vendor-api-url.net/vdc/{management-edgegateway-uuid}"
-              numberOfOrgNetworks="8" numberOfExtNetworks="1"
-              name="GDS Development Gateway" isBusy="false" haStatus="UP" gatewayStatus="READY"
-              href="https://vendor-api-url.net/admin/edgeGateway/{id}"
-              isSyslogServerSettingInSync="true" taskStatus="success"
-              taskOperation="networkConfigureEdgeGatewayServices"
-              task="https://vendor-api-url.net/task/***" taskDetails=" "/>
-
-         *e.g. https://vendor-api-url.net/admin/edgeGateway/{id}*
-
+            <AvailableNetworks>
+              <Network type="application/vnd.vmware.vcloud.network+xml" name="NetworkTest2"
+                  href="https:///vendor-api-url.net/network/{network-uuid-2}"/>
+              <Network type="application/vnd.vmware.vcloud.network+xml" name="NetworkTest"
+                  href="https:///vendor-api-url.net/network/{network-uuid-1}"/>
+            </AvailableNetworks>
 
 
