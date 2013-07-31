@@ -10,7 +10,7 @@ class VcloudSettings
   end
 
   def edge_gateway_config_url
-    @api_url + "/api/admin/edgeGateway/" + @edge_gateway_uuid + "/action/configureServices"
+    @api_url + "/admin/edgeGateway/" + @edge_gateway_uuid + "/action/configureServices"
   end
 
   def self.request_headers

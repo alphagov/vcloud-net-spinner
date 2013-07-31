@@ -8,7 +8,7 @@ describe "happy path for lb configurations" do
     WebMock.reset!
 
     session_url = "https://super%40preview:man@www.vcloud.eggplant.com/sessions"
-    edge_gateway_configure_url = "https://www.vcloud.eggplant.com/api/admin/edgeGateway/123321/action/configureServices"
+    edge_gateway_configure_url = "https://www.vcloud.eggplant.com/admin/edgeGateway/123321/action/configureServices"
     task_url = "https://www.vcloud.eggplant.com/api/tasks/10"
 
     stub_request(:post, session_url).
