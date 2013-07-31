@@ -67,10 +67,12 @@ A particular rules directory structure could be as follows.
   * Common network rules => `./common_firewall.rb`, `./common_lb.rb`, `./common_lb.rb`
 
 * interfaces.yaml file:
+  To find the urls for network, follow the document at
+  `docs/find_network_url`
 
         interface:
-          VDC-1: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
-          VDC-2: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
+          Network-1: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
+          Network-2: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
 
 ### DSL
 
