@@ -70,7 +70,7 @@ A particular rules directory structure could be as follows.
   To find the urls for network, follow the document at
   `docs/find_network_url`
 
-        interface:
+        interfaces:
           Network-1: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
           Network-2: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
 
