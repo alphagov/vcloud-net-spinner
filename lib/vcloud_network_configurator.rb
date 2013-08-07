@@ -29,8 +29,7 @@ class VcloudNetworkConfigurator
         @options[:password] = v
       end
 
-      o.on("-e", "--env=E", ["preview", "staging", "production"],
-           "Environment: preview | staging | production") do |v|
+      o.on("-e", "--env=E", String, "Environment: name by which you would refer your environment as (also used for tree structure)") do |v|
         @options[:environment] = v
       end
 
