@@ -8,10 +8,13 @@ class VcloudConfigureRequest
     @environment = environment
     @component = component
     @response = nil
-    @interfaces = YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces']
 
-    require "#{rules_directory}/common_#{component}.rb"
-    require "#{rules_directory}/#{@environment}/#{component}"
+
+    @interfaces = File.file?("#{rules_directory}/#{@environment}/interfaces.yaml") ?
+        YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces'] : {}
+
+    require "#{rules_directory}/common_#{component}.rb" if File.file?("#{rules_directory}/common_#{component}.rb")
+    require "#{rules_directory}/#{@environment}/#{component}" if File.file?("#{rules_directory}/#{@environment}/#{component}.rb")
   end
 
   def components
