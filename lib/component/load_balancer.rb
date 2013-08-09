@@ -59,6 +59,7 @@ module Component
     end
 
     def self.generate_xml interfaces
+      return if LoadBalancer.instance.pools.nil? or LoadBalancer.instance.pools.empty?
       Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
         xml.EdgeGatewayServiceConfiguration('xmlns' => "http://www.vmware.com/vcloud/v1.5", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:schemaLocation' => "http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd") {
           xml.LoadBalancerService {
