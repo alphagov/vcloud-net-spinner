@@ -6,18 +6,11 @@ vcloud api.
 
 ## Installation
 
-    gem install vcloud-network-configurator
-
-  * Note: It is work in progress, and currently you would have to build
-    them gem locally using the following commands
-
-        git clone git@github.com:alphagov/vcloud-network-configurator.git
-        gem build vcloud-network-configurator.gemspec
-        gem install ./vcloud-network-configurator-0.1.0.gem
+    gem install vcloud-net-spinner
 
 ## Usage
 
-    Usage: vcloud_configure_edge_gateway [options] API_URL
+    Usage: vcloud-net-spinner [options] API_URL
         -u, --username=U                         Vcloud Username
         -p, --password=P                         Vcloud Password
         -e, --env=E                              Environment: preview | staging | production
@@ -33,7 +26,7 @@ vcloud api.
 
 ### Example
 
-      vcloud_configure_edge_gateway -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
+      vcloud-net-spinner -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
 
 ### Rules Directory
 

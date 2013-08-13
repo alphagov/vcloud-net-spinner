@@ -18,7 +18,7 @@ class VcloudNetworkConfigurator
   private
   def parse args
     optparser = OptionParser.new do |o|
-      o.banner = "Usage: vcloud_configure_edge_gateway [options] API_URL"
+      o.banner = "Usage: vcloud-net-spinner [options] API_URL"
       o.summary_width = 40
 
       o.on("-u", "--username=U", String, "Vcloud Username") do |v|

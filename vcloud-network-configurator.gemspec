@@ -3,16 +3,16 @@ $:.push File.expand_path("../lib", __FILE__)
 require "vcloud_network_configurator/version"
 
 Gem::Specification.new do |s|
-  s.name        = "vcloud-network-configurator"
+  s.name        = "vcloud-net-spinner"
   s.version     = VERSION
   s.authors     = ["Garima Singh"]
   s.email       = ["igarimasingh@gmail.com"]
-  s.homepage    = "https://github.com/alphagov/vcloud-network-configurator"
+  s.homepage    = "https://github.com/alphagov/vcloud-net-spinner"
   s.summary     = %q{Configure firewall, NAT and load balancer for vcloud}
   s.description = "It allows one to right rules for firewall, NAT and load " +
     "balancer using vcloud API and configure them on the vendor end"
 
-  s.rubyforge_project = "vcloud-network-configurator"
+  s.rubyforge_project = "vcloud-net-spinner"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
