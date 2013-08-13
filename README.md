@@ -10,7 +10,7 @@ vcloud api.
 
 ## Usage
 
-    Usage: vcloud-net-spinner-configure [options] API_URL
+    Usage: vcloud-net-spinner [options] API_URL
         -u, --username=U                         Vcloud Username
         -p, --password=P                         Vcloud Password
         -e, --env=E                              Environment: preview | staging | production
@@ -26,7 +26,7 @@ vcloud api.
 
 ### Example
 
-      vcloud-net-spinner-configure -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
+      vcloud-net-spinner -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
 
 ### Rules Directory
 
