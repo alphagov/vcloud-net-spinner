@@ -1,3 +1,8 @@
+0.1.2 2013-08-13
+
+ - Exit when no rules provided
+ - Made the presence of files in directory tree as optional
+
 0.1.1 2013-08-13
 
  - Renaming the gem to vcloud-net-spinner
