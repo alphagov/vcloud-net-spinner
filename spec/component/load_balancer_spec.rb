@@ -11,6 +11,12 @@ describe "load balancer" do
     }
   end
 
+  it "should not generate xml if no rules present" do
+    load_balancer do
+    end
+    Component::LoadBalancer.generate_xml(@interfaces).should be_nil
+  end
+
   it "should be able to generate XML that matches what we created directly through the control panel" do
     load_balancer do
       configure "Signonotron" do

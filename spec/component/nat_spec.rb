@@ -25,4 +25,11 @@ describe "nat" do
     }
     Nokogiri::XML(Component::NAT.generate_xml(interfaces).doc.root.to_s).should be_equivalent_to Nokogiri::XML(File.open("spec/component/nat.xml"))
   end
+
+  it "should not generate xml if no rules present" do
+    Component::NAT.reset
+    nat do
+    end
+    Component::NAT.generate_xml({}).should be_nil
+  end
 end

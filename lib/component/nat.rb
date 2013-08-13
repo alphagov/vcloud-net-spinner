@@ -25,11 +25,16 @@ module Component
       rules << options
     end
 
+    def self.reset
+      @nat = nil
+    end
+
     def self.instance
       @nat ||= NAT.new
     end
 
     def self.generate_xml interfaces
+      return if NAT.instance.rules.nil? or NAT.instance.rules.empty?
       Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
         xml.EdgeGatewayServiceConfiguration('xmlns' => "http://www.vmware.com/vcloud/v1.5", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:schemaLocation' => "http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd") {
           xml.NatService {

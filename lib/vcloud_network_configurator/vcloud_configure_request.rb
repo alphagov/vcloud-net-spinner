@@ -8,10 +8,13 @@ class VcloudConfigureRequest
     @environment = environment
     @component = component
     @response = nil
-    @interfaces = YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces']
 
-    require "#{rules_directory}/common_#{component}.rb"
-    require "#{rules_directory}/#{@environment}/#{component}"
+
+    @interfaces = File.file?("#{rules_directory}/#{@environment}/interfaces.yaml") ?
+        YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces'] : {}
+
+    require "#{rules_directory}/common_#{component}.rb" if File.file?("#{rules_directory}/common_#{component}.rb")
+    require "#{rules_directory}/#{@environment}/#{component}" if File.file?("#{rules_directory}/#{@environment}/#{component}.rb")
   end
 
   def components
@@ -19,13 +22,17 @@ class VcloudConfigureRequest
   end
 
   def submit
+    generated_xml = Kernel.const_get("Component").const_get(components[@component]).
+                      generate_xml(@interfaces)
+    abort "No rules found. exiting" if generated_xml.nil?
+
     url = URI(@config_url)
     request = Net::HTTP::Post.new url.request_uri
     request['Accept'] = VcloudSettings.request_headers['Accept']
     request['Content-Type'] = VcloudSettings.request_headers['Content-Type']
     request['x-vcloud-authorization'] = @auth_header
 
-    request.body = Kernel.const_get("Component").const_get(components[@component]).generate_xml(@interfaces).to_xml
+    request.body = generated_xml.to_xml
 
     puts "Reading configuration from #{@config_file}"
     puts "Submitting request at #{@config_url}\n"

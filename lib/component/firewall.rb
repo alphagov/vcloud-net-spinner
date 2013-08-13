@@ -36,6 +36,7 @@ module Component
     end
 
     def self.generate_xml interfaces
+      return if Firewall.instance.rules.nil? or Firewall.instance.rules.empty?
       Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
         xml.EdgeGatewayServiceConfiguration('xmlns' => "http://www.vmware.com/vcloud/v1.5", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:schemaLocation' => "http://www.vmware.com/vcloud/v1.5 http://vendor-api-url.net/v1.5/schema/master.xsd") {
           xml.FirewallService {
