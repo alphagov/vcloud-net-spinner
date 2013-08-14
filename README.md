@@ -23,44 +23,23 @@ vcloud api.
 
       vcloud-net-spinner -u username -p password -e preview -U 1yenz127ynz1872eyz12yz817e -c firewall -o development -d . http://vcloud.vendor.com/api
 
-### Rules Directory
+### Rules Files & Interfaces Files
 
-A particular rules directory structure could be as follows.
+* You can pass multiple files containing component rules via
+  `--rule-files`.
 
-        .
-        ├── Gemfile
-        ├── Gemfile.lock
-        ├── common_firewall.rb
-        ├── common_lb.rb
-        ├── common_nat.rb
-        ├── env1
-        │   ├── firewall.rb
-        │   ├── interfaces.yaml
-        │   ├── lb.rb
-        │   └── nat.rb
-        ├── env2
-            ├── firewall.rb
-            ├── interfaces.yaml
-            ├── lb.rb
-            └── nat.rb
+* You can specify various files containing network interfaces
+  rules via `--interfaces-files`.
 
-* Here each environment represent a separate organisation with your vcloud
-  vendor (eg qa, staging, production). These could have specific rules for nat,
-  firewall. Also these can have common firewall rules which could be shared
-  across all environments. A common example of such a situation is internal
-  network firewall rules are usually shared across environments, whereas
-  external network firewall rules would be different for all environment.
-
-  * Specific network rules => `env1/firewall.rb`, `env1/nat.rb`, `env1/lb.rb`
-  * Common network rules => `./common_firewall.rb`, `./common_lb.rb`, `./common_lb.rb`
-
-* interfaces.yaml file:
-  To find the urls for network, follow the document at
-  `docs/find_network_url`
+  A particular `interfaces.yaml` file looks as follows:
 
         interfaces:
           Network-1: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
           Network-2: "https://localhost:4567/api/admin/network/<vdc-network-uuid>"
+
+  To find the urls for network, follow the document a
+  `docs/find_network_url`
+
 
 ### DSL
 
