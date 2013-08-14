@@ -13,16 +13,11 @@ vcloud api.
     Usage: vcloud-net-spinner [options] API_URL
         -u, --username=U                         Vcloud Username
         -p, --password=P                         Vcloud Password
-        -e, --env=E                              Environment: preview | staging | production
-        -U, --organization-edgegateway-uuid=U    UID: This is required to configure edgegateway services. For more info refer to
-                                                  docs/find_organisation_edgegateway_uuid
-        -c, --component=c                        Environment: lb|firewall|nat
-        -o, --organization=o                     Organization: optional. Will default to environment
-        -d, --rule-directory=d                   Rules Directory: From where to read the NAT/Firewal/LB rules
-
-  Note: organization maps to the organization name in vcloud. Whereas,
-        environment maps to your internal environment reference (e.g.
-        preview, qa, staging, production, etc)
+        -U, --organization-edgegateway-uuid=U    UID: This is required to configure edgegateway services. For more info refer to docs/find_organisation_edgegateway_uuid
+        -c, --component=c                        Component: lb|firewall|nat
+        -o, --organization=o                     Organization: Name of vcloud organization
+        -r, --rule-files file1,file2,file3       Rules Files: files which will contain the rules for the component provided
+        -i, --interfaces-files file1,file2,file3 Interfaces Files: files which will contain interfaces
 
 ### Example
 

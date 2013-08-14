@@ -2,10 +2,9 @@ require "net/http"
 require 'yaml'
 
 class VcloudConfigureRequest
-  def initialize vcloud_settings, auth_header, environment, component, rules_files, interfaces_files
+  def initialize vcloud_settings, auth_header, component, rules_files, interfaces_files
     @auth_header = auth_header
     @config_url =  vcloud_settings.edge_gateway_config_url
-    @environment = environment
     @component = component
     @response = nil
 

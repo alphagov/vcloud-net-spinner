@@ -29,20 +29,16 @@ class VcloudNetworkConfigurator
         @options[:password] = v
       end
 
-      o.on("-e", "--env=E", String, "Environment: name by which you would refer your environment as (also used for tree structure)") do |v|
-        @options[:environment] = v
-      end
-
       o.on("-U", "--organization-edgegateway-uuid=U",
            "UID: This is required to configure edgegateway services. For more info refer to docs/find_organisation_edgegateway_uuid") do |v|
         @options[:org_edgegateway_uuid] = v
       end
 
-      o.on("-c", "--component=c", ["lb", "firewall", "nat"], "Environment: lb|firewall|nat") do |v|
+      o.on("-c", "--component=c", ["lb", "firewall", "nat"], "Component: lb|firewall|nat") do |v|
         @options[:component] = v
       end
 
-      o.on("-o", "--organization=o", "Organization: optional. Will default to environment") do |v|
+      o.on("-o", "--organization=o", "Organization: Name of vcloud organization") do |v|
         @options[:organization] = v
       end
 
@@ -61,8 +57,6 @@ class VcloudNetworkConfigurator
     else
       raise Exception.new("No API_URL provided. See help for more details")
     end
-
-    @options[:organization] ||= @options[:environment]
   end
 
 end
