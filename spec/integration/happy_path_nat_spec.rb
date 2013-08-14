@@ -34,7 +34,7 @@ describe "happy path for nat configurations" do
     args = ["-u", "super", "-p", "man", "-U", "123321", "-r",
             "spec/integration/test_data/rules_dir/common_nat.rb,spec/integration/test_data/rules_dir/preview/nat.rb",
             "-i", "spec/integration/test_data/rules_dir/preview/interfaces.yaml",
-            "-e", "preview",
+            "-o", "preview",
             "-c", "nat", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)

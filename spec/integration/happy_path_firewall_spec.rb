@@ -7,7 +7,7 @@ describe "happy path" do
     WebMock.disable_net_connect!
     WebMock.reset!
 
-    session_url = "https://super%40preview:man@www.vcloud.eggplant.com/sessions"
+    session_url = "https://super%40org-name:man@www.vcloud.eggplant.com/sessions"
     edge_gateway_configure_url = "https://www.vcloud.eggplant.com/admin/edgeGateway/123321/action/configureServices"
     task_url = "https://www.vcloud.eggplant.com/api/tasks/10"
 
@@ -33,7 +33,7 @@ describe "happy path" do
   it "should configure edgegateway successfully" do
     args = ["-u", "super", "-p", "man", "-U", "123321", "-r",
             "spec/integration/test_data/rules_dir/common_firewall.rb,spec/integration/test_data/rules_dir/preview/firewall.rb",
-            "-e", "preview",
+            "-o", "org-name",
             "-c", "firewall", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)

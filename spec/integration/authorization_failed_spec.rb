@@ -15,7 +15,7 @@ describe "happy path" do
   end
 
   it "should abort on failure of authorization" do
-    args = ["-u", "super", "-p", "man", "-U", "123321", "-e", "preview",
+    args = ["-u", "super", "-p", "man", "-U", "123321", "-o", "preview",
             "-c", "firewall", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)
