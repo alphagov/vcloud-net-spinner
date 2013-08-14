@@ -16,7 +16,7 @@ vcloud api.
         -U, --organization-edgegateway-uuid=U    UID: This is required to configure edgegateway services. For more info refer to docs/find_organisation_edgegateway_uuid
         -c, --component=c                        Component: lb|firewall|nat
         -o, --organization=o                     Organization: Name of vcloud organization
-        -r, --rule-files file1,file2,file3       Rules Files: files which will contain the rules for the component provided
+        -r, --rules-files file1,file2,file3      Rules Files: files which will contain the rules for the component provided
         -i, --interfaces-files file1,file2,file3 Interfaces Files: files which will contain interfaces
 
 ### Example
@@ -26,7 +26,7 @@ vcloud api.
 ### Rules Files & Interfaces Files
 
 * You can pass multiple files containing component rules via
-  `--rule-files`.
+  `--rules-files`.
 
 * You can specify various files containing network interfaces
   rules via `--interfaces-files`.

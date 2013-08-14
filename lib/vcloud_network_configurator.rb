@@ -42,7 +42,7 @@ class VcloudNetworkConfigurator
         @options[:organization] = v
       end
 
-      o.on("-r", "--rule-files file1,file2,file3", Array, "Rules Files: files which will contain the rules for the component provided") do |v|
+      o.on("-r", "--rules-files file1,file2,file3", Array, "Rules Files: files which will contain the rules for the component provided") do |v|
         @options[:rules_files] = v
       end
 
