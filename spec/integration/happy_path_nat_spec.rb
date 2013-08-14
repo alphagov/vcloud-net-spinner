@@ -31,8 +31,10 @@ describe "happy path for nat configurations" do
   end
 
   it "should configure edgegateway successfully" do
-    args = ["-u", "super", "-p", "man", "-U", "123321", "-d",
-            "spec/integration/test_data/rules_dir", "-e", "preview",
+    args = ["-u", "super", "-p", "man", "-U", "123321", "-r",
+            "spec/integration/test_data/rules_dir/common_nat.rb,spec/integration/test_data/rules_dir/preview/nat.rb",
+            "-i", "spec/integration/test_data/rules_dir/preview/interfaces.yaml",
+            "-o", "preview",
             "-c", "nat", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)
