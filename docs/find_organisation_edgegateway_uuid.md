@@ -1,58 +1,48 @@
-# How to find Organisation Edgegateway UUID
 
-##Steps:
+# How to find the Edge Gateway UUID
 
-   * vcloud authorization
-
-        curl -v -X POST -d '' -H "Accept: application/*+xml;version=5.1"
-          -u "{username}@vcloud-org-name:**********"
-          https://vendor-api-url.net/sessions
+Using: [VCloud Tools](https://github.com/alphagov/vcloudtools)
 
 
-    The above returns the following information in response
-    `x-cloud-authorization` and
-    `<Link rel="down" type="application/vnd.vmware.vcloud.orgList+xml" href="https://vendor-api-url.net/org/"/>`
+## Logging into VCloud
 
+```
+#$> export VCLOUD_API_ROOT=https://api.vcd.example.com/api eval `vcloud-login`
+Please log into vCloud
+Username: username@organisation
+Password:
+```
 
-   * List organisations
+## Finding the organisation uuid
 
-        curl -v --insecure
-          -H "x-vcloud-authorization: {x-vcloud-auth-code}"
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/org/"
+```
+#$> vcloud-browse /org | grep MyOrg
+    <Org type="application/vnd.vmware.vcloud.org+xml" name="MyOrg" href="https://api.vcd.example.com/api/org/77595ec2-2391-4817-9257-66b12533d684"/>
+```
 
+In this example, the Org UUID is `77595ec2-2391-4817-9257-66b12533d684`
 
-      This gives the list of organizations you have access to, and you can choose the one you need by using the name attribute `<Org type="application/vnd.vmware.vcloud.org+xml" name="ORG-NAME" href="https://vendor-api-url.net/org/{org-code}"/>`
+## Finding the VDC UUID
 
-   * Get details of the organisation
+```
+#$> vcloud-browse /org/77595ec2-2391-4817-9257-66b12533d684 | grep vnd.vmware.vcloud.vdc+xml
+    <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml" name="VDC1" href="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"/>
+```
+In this example, the VDC UUID is `4887d502-5873-4d0c-bb63-075792277ec6`
 
-        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}"
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/org/{org-code}"
+## Find the Edge Gateway UUID
 
-      * This also gives details about various vdc. We would need the one for management vdc:
-
-            <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml"
-              name="Management - GDS Development (SL1)"
-              href="https://vendor-api-url.net/vdc/{org-code}"/>
-
-   * Retrieve edgegateway record
-
-        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}="
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/admin/vdc/{management-edgegateway-uuid}/edgeGateways"
-
-      * Response of the above is (from which you would need the id in the href attribute):
-
-            <EdgeGatewayRecord vdc="https://vendor-api-url.net/vdc/{management-edgegateway-uuid}"
+```
+#$> vcloud-browse /vdc/4887d502-5873-4d0c-bb63-075792277ec6/edgeGateways
+            <EdgeGatewayRecord vdc="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"
               numberOfOrgNetworks="8" numberOfExtNetworks="1"
               name="GDS Development Gateway" isBusy="false" haStatus="UP" gatewayStatus="READY"
-              href="https://vendor-api-url.net/admin/edgeGateway/{id}"
+              href="https://api.vcd.example.com/api/admin/edgeGateway/be8e9731-0f3d-474b-b739-085afd27cdfd"
               isSyslogServerSettingInSync="true" taskStatus="success"
               taskOperation="networkConfigureEdgeGatewayServices"
-              task="https://vendor-api-url.net/task/***" taskDetails=" "/>
-
-         *e.g. https://vendor-api-url.net/admin/edgeGateway/{id}*
+              task="https://api.vcd.example.com/api/task/***" taskDetails=" "/>
+```
+In this example, the Edge Gateway UUID is `be8e9731-0f3d-474b-b739-085afd27cdfd`
 
 
 

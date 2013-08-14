@@ -1,56 +1,46 @@
 # How to find Network UUID for interfaces.yaml
 
-## Steps
 
-   * vcloud authorization
-
-        curl -v -X POST -d '' -H "Accept: application/*+xml;version=5.1"
-          -u "{username}@vcloud-org-name:**********"
-          https://vendor-api-url.net/sessions
+Using: [VCloud Tools](https://github.com/alphagov/vcloudtools)
 
 
-    The above returns the following information in response
-    `x-cloud-authorization` and
-    `<Link rel="down" type="application/vnd.vmware.vcloud.orgList+xml" href="https://vendor-api-url.net/org/"/>`
+## Logging into VCloud
+
+```
+#$> export VCLOUD_API_ROOT=https://api.vcd.example.com/api eval `vcloud-login`
+Please log into vCloud
+Username: username@organisation
+Password:
+```
+
+## Finding the organisation uuid
+
+```
+#$> vcloud-browse /org | grep MyOrg
+    <Org type="application/vnd.vmware.vcloud.org+xml" name="MyOrg" href="https://api.vcd.example.com/api/org/77595ec2-2391-4817-9257-66b12533d684"/>
+```
+
+In this example, the Org UUID is `77595ec2-2391-4817-9257-66b12533d684`
+
+## Finding the VDC
+
+```
+#$> vcloud-browse /org/77595ec2-2391-4817-9257-66b12533d684 | grep vnd.vmware.vcloud.vdc+xml
+    <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml" name="VDC1" href="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"/>
+```
+
+## Finding the Networks in that VDC
 
 
-   * List organisations
+```
+#$> vcloud-browse /vdc/4887d502-5873-4d0c-bb63-075792277ec6
 
-        curl -v --insecure
-          -H "x-vcloud-authorization: {x-vcloud-auth-code}"
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/org/"
-
-
-      This gives the list of organizations you have access to, and you can choose the one you need by using the name attribute `<Org type="application/vnd.vmware.vcloud.org+xml" name="ORG-NAME" href="https://vendor-api-url.net/org/{org-code}"/>`
-
-   * Get details of the organisation
-
-        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}"
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/org/{org-code}"
-
-      * This also gives details about various vdc. We would need the one for management vdc:
-
-            <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml"
-              name="Management - GDS Development (SL1)"
-              href="https://vendor-api-url.net/vdc/{vdc-uuid}"/>
-
-    * Get vdc details
-
-        curl -v --insecure -H "x-vcloud-authorization: {x-vcloud-auth-code}"
-          -H "Accept: application/*+xml;version=5.1"
-          "https://vendor-api-url.net/vdc/{vdc-uuid}
-
-      * This would provide you with available networks. From which you
-        can use the name and href attributes for adding to your
-        interfaces.yaml
 
             <AvailableNetworks>
-              <Network type="application/vnd.vmware.vcloud.network+xml" name="NetworkTest2"
-                  href="https:///vendor-api-url.net/network/{network-uuid-2}"/>
-              <Network type="application/vnd.vmware.vcloud.network+xml" name="NetworkTest"
-                  href="https:///vendor-api-url.net/network/{network-uuid-1}"/>
+              <Network type="application/vnd.vmware.vcloud.network+xml" name="Net2"
+                  href="https://api.vcd.example.com/api/network/6d0349da-ccd7-4f7a-a4af-71899bf7f12a"/>
+              <Network type="application/vnd.vmware.vcloud.network+xml" name="Net1"
+                  href="https://api.vcd.example.com/api/network/4e376bed-5d4c-4748-9d0d-1469b24f31c0"/>
             </AvailableNetworks>
-
+```
 
