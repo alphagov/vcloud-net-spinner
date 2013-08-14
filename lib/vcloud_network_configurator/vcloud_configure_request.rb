@@ -2,19 +2,21 @@ require "net/http"
 require 'yaml'
 
 class VcloudConfigureRequest
-  def initialize vcloud_settings, auth_header, environment, component, rules_directory
+  def initialize vcloud_settings, auth_header, environment, component, rules_files, interfaces_files
     @auth_header = auth_header
     @config_url =  vcloud_settings.edge_gateway_config_url
     @environment = environment
     @component = component
     @response = nil
 
+    @interfaces = {}
+    interfaces_files.each do |ifile|
+      @interfaces.merge!(YAML::load_file(ifile)['interfaces']) if File.file?(ifile)
+    end if interfaces_files
 
-    @interfaces = File.file?("#{rules_directory}/#{@environment}/interfaces.yaml") ?
-        YAML::load_file("#{rules_directory}/#{@environment}/interfaces.yaml")['interfaces'] : {}
-
-    require "#{rules_directory}/common_#{component}.rb" if File.file?("#{rules_directory}/common_#{component}.rb")
-    require "#{rules_directory}/#{@environment}/#{component}" if File.file?("#{rules_directory}/#{@environment}/#{component}.rb")
+    rules_files.each do |rfile|
+      require rfile if File.file?(rfile)
+    end if rules_files
   end
 
   def components

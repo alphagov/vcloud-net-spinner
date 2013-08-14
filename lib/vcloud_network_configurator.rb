@@ -46,8 +46,12 @@ class VcloudNetworkConfigurator
         @options[:organization] = v
       end
 
-      o.on("-d", "--rule-directory=d", "Rules Directory: From where to read the NAT/Firewal/LB rules") do |v|
-        @options[:rules_directory] = v
+      o.on("-r", "--rule-files file1,file2,file3", Array, "Rules Files: files which will contain the rules for the component provided") do |v|
+        @options[:rules_files] = v
+      end
+
+      o.on("-i", "--interfaces-files file1,file2,file3", Array, "Interfaces Files: files which will contain interfaces") do |v|
+        @options[:interfaces_files] = v
       end
     end
 

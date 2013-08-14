@@ -31,8 +31,10 @@ describe "happy path for lb configurations" do
   end
 
   it "should configure edgegateway successfully" do
-    args = ["-u", "super", "-p", "man", "-U", "123321", "-d",
-            "spec/integration/test_data/rules_dir", "-e", "preview",
+    args = ["-u", "super", "-p", "man", "-U", "123321", "-r",
+            "spec/integration/test_data/rules_dir/common_lb.rb,spec/integration/test_data/rules_dir/preview/lb.rb",
+            "-i", "spec/integration/test_data/rules_dir/preview/interfaces.yaml",
+            "-e", "preview",
             "-c", "lb", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)

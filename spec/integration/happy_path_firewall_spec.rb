@@ -31,8 +31,9 @@ describe "happy path" do
   end
 
   it "should configure edgegateway successfully" do
-    args = ["-u", "super", "-p", "man", "-U", "123321", "-d",
-            "spec/integration/test_data/rules_dir", "-e", "preview",
+    args = ["-u", "super", "-p", "man", "-U", "123321", "-r",
+            "spec/integration/test_data/rules_dir/common_firewall.rb,spec/integration/test_data/rules_dir/preview/firewall.rb",
+            "-e", "preview",
             "-c", "firewall", "https://www.vcloud.eggplant.com"]
 
     configurator = VcloudNetworkConfigurator.new(args)

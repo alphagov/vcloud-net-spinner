@@ -11,7 +11,7 @@ class EdgeGateway
 
   def apply_configuration
     auth_header = authorize_request
-    configure_request = VcloudConfigureRequest.new(@vcloud_settings, auth_header, @options[:environment], @options[:component], @options[:rules_directory])
+    configure_request = VcloudConfigureRequest.new(@vcloud_settings, auth_header, @options[:environment], @options[:component], @options[:rules_files], @options[:interfaces_files])
     configure_request.submit
 
     if configure_request.success?
