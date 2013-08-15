@@ -10,11 +10,13 @@ class VcloudConfigureRequest
 
     @interfaces = {}
     interfaces_files.each do |ifile|
-      @interfaces.merge!(YAML::load_file(ifile)['interfaces']) if File.file?(ifile)
+      @interfaces.merge!(YAML::load_file(ifile)['interfaces']) if ifile and File.file?(File.expand_path(ifile))
     end if interfaces_files
 
     rules_files.each do |rfile|
-      require rfile if File.file?(rfile)
+      next if rfile.nil?
+      expanded_rfile = File.expand_path(rfile)
+      require expanded_rfile if File.file?(expanded_rfile)
     end if rules_files
   end
 
