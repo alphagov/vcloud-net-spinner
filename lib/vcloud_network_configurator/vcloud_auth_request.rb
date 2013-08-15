@@ -24,7 +24,6 @@ class VcloudAuthRequest
     end
 
     puts "HTTP #{response.code}"
-    puts response
     @response = response
   end
 
