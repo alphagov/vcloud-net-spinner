@@ -1,3 +1,8 @@
+0.1.3 2013-08-15
+
+ - License addition
+ - Removed the dependency on tree structure
+
 0.1.2 2013-08-13
 
  - Exit when no rules provided
