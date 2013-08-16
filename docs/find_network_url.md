@@ -1,10 +1,17 @@
 # How to find Network UUID for interfaces.yaml
 
+There are two networks with vCloud
+
+- Internal
+- External
+
+Belows are steps to find both of them
 
 Using: [VCloud Tools](https://github.com/alphagov/vcloudtools)
 
+## Internal Networks
 
-## Logging into VCloud
+### Logging into VCloud
 
 ```
 #$> export VCLOUD_API_ROOT=https://api.vcd.example.com/api eval `vcloud-login`
@@ -13,7 +20,7 @@ Username: username@organisation
 Password:
 ```
 
-## Finding the organisation uuid
+### Finding the organisation uuid
 
 ```
 #$> vcloud-browse /org | grep MyOrg
@@ -22,14 +29,14 @@ Password:
 
 In this example, the Org UUID is `77595ec2-2391-4817-9257-66b12533d684`
 
-## Finding the VDC
+### Finding the VDC
 
 ```
 #$> vcloud-browse /org/77595ec2-2391-4817-9257-66b12533d684 | grep vnd.vmware.vcloud.vdc+xml
     <Link rel="down" type="application/vnd.vmware.vcloud.vdc+xml" name="VDC1" href="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"/>
 ```
 
-## Finding the Networks in that VDC
+### Finding the Networks in that VDC
 
 
 ```
@@ -44,3 +51,32 @@ In this example, the Org UUID is `77595ec2-2391-4817-9257-66b12533d684`
             </AvailableNetworks>
 ```
 
+## External Networks
+
+### Logging into VCloud
+
+```
+#$> export VCLOUD_API_ROOT=https://api.vcd.example.com/api eval `vcloud-login`
+Please log into vCloud
+Username: username@organisation
+Password:
+```
+
+### Finding external network uuids
+
+```
+#$> vcloud-browse /admin/extension/externalNetworkReferences
+
+     <vmext:VMWExternalNetworkReferences ... >
+      ...
+       <vmext:ExternalNetworkReference
+          type="application/vnd.vmware.admin.extension.network+xml"
+          name="VC0"
+          href="https://vcloud.example.com/api/admin/extension/externalnet/<uuid1>" />
+       <vmext:ExternalNetworkReference
+          type="application/vnd.vmware.admin.extension.network+xml"
+          name="VC1"
+          href="https://vcloud.example.com/api/admin/extension/externalnet/<uuid2>" />
+       ...
+    </vmext:VMWExternalNetworkReferences>
+```
