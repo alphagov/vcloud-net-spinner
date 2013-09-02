@@ -1,4 +1,3 @@
-
 # How to find the Edge Gateway UUID
 
 Using: [VCloud Tools](https://github.com/alphagov/vcloudtools)
@@ -33,7 +32,7 @@ In this example, the VDC UUID is `4887d502-5873-4d0c-bb63-075792277ec6`
 ## Find the Edge Gateway UUID
 
 ```
-#$> vcloud-browse /vdc/4887d502-5873-4d0c-bb63-075792277ec6/edgeGateways
+#$> vcloud-browse /admin/vdc/4887d502-5873-4d0c-bb63-075792277ec6/edgeGateways
             <EdgeGatewayRecord vdc="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"
               numberOfOrgNetworks="8" numberOfExtNetworks="1"
               name="GDS Development Gateway" isBusy="false" haStatus="UP" gatewayStatus="READY"
