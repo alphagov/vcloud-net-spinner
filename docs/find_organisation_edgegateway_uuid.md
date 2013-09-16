@@ -32,16 +32,7 @@ In this example, the VDC UUID is `4887d502-5873-4d0c-bb63-075792277ec6`
 ## Find the Edge Gateway UUID
 
 ```
-#$> vcloud-browse /admin/vdc/4887d502-5873-4d0c-bb63-075792277ec6/edgeGateways
-            <EdgeGatewayRecord vdc="https://api.vcd.example.com/api/vdc/4887d502-5873-4d0c-bb63-075792277ec6"
-              numberOfOrgNetworks="8" numberOfExtNetworks="1"
-              name="GDS Development Gateway" isBusy="false" haStatus="UP" gatewayStatus="READY"
-              href="https://api.vcd.example.com/api/admin/edgeGateway/be8e9731-0f3d-474b-b739-085afd27cdfd"
-              isSyslogServerSettingInSync="true" taskStatus="success"
-              taskOperation="networkConfigureEdgeGatewayServices"
-              task="https://api.vcd.example.com/api/task/***" taskDetails=" "/>
+#$> vcloud-browse /admin/vdc/4887d502-5873-4d0c-bb63-075792277ec6/edgeGateways\?format=references | grep 'EdgeGatewayReference '
+    <EdgeGatewayReference type="application/vnd.vmware.admin.edgeGateway+xml" name="My VSE (nft00012a3)" id="urn:vcloud:gateway:be8e9731-0f3d-474b-b739-085afd27cdfd" href="https://api.vcd.example.com/api/admin/edgeGateway/be8e9731-0f3d-474b-b739-085afd27cdfd"/>
 ```
 In this example, the Edge Gateway UUID is `be8e9731-0f3d-474b-b739-085afd27cdfd`
-
-
-
