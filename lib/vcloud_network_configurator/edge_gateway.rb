@@ -18,8 +18,7 @@ class EdgeGateway
       check_for_success auth_header, ConfigureTask.new(configure_request.response_body)
       return true
     else
-      puts "Failed to configure the edge gateway"
-      return false
+      abort("Failed to configure the edge gateway")
     end
   end
 
