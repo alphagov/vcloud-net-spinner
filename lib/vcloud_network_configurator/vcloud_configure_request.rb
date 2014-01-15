@@ -47,7 +47,7 @@ class VcloudConfigureRequest
     end
 
     puts "HTTP #{response.code}"
-    puts response
+    puts response.body
     @response = response
   end
 
