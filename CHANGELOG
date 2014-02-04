@@ -1,3 +1,8 @@
+0.1.6 2014-02-04
+
+ - Print the HTTP response body from the vCloud endpoint to aid
+   troubleshooting.
+
 0.1.5 2014-01-15
 
  - Exit code 1 if config request fails.
