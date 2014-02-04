@@ -20,7 +20,7 @@ class VcloudCheckForConfigureTaskRequest
     response = session.start do |http|
       http.request request
     end
-    puts response
+    puts response.body
     return response
   end
 end
