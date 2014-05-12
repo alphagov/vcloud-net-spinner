@@ -69,5 +69,19 @@ describe "load balancer" do
       end
     end }.to raise_error
   end
+
+  it "should raise an exception if a healthcheck URI is defined for a healthcheck using a protocol other than HTTP" do
+    expect {
+      load_balancer do
+        configure "Oz" do
+          pool ["172.16.0.2", "172.16.0.3"] do
+            https :health_check_port => 9401, :health_check_path => "/yellowbrick"
+          end
+
+          virtual_server :name => "Wizard of Oz", :interface => "TestData", :ip => "200.11.99.71"
+        end
+      end
+    }.to raise_error
+  end
 end
 
