@@ -27,7 +27,7 @@
         <HealthCheckPort>9401</HealthCheckPort>
         <HealthCheck>
           <Mode>SSL</Mode>
-          <Uri>/</Uri>
+          <Uri/>
           <HealthThreshold>2</HealthThreshold>
           <UnhealthThreshold>3</UnhealthThreshold>
           <Interval>5</Interval>
@@ -113,7 +113,7 @@
         <HealthCheckPort>9409</HealthCheckPort>
         <HealthCheck>
           <Mode>SSL</Mode>
-          <Uri>/</Uri>
+          <Uri/>
           <HealthThreshold>2</HealthThreshold>
           <UnhealthThreshold>3</UnhealthThreshold>
           <Interval>5</Interval>
@@ -218,7 +218,7 @@
         <HealthCheckPort/>
         <HealthCheck>
           <Mode>SSL</Mode>
-          <Uri>/</Uri>
+          <Uri/>
           <HealthThreshold>2</HealthThreshold>
           <UnhealthThreshold>3</UnhealthThreshold>
           <Interval>5</Interval>
@@ -323,7 +323,7 @@
         <HealthCheckPort/>
         <HealthCheck>
           <Mode>SSL</Mode>
-          <Uri>/</Uri>
+          <Uri/>
           <HealthThreshold>2</HealthThreshold>
           <UnhealthThreshold>3</UnhealthThreshold>
           <Interval>5</Interval>
