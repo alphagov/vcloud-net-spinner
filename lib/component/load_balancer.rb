@@ -40,7 +40,7 @@ module Component
     end
 
     def https(options = {})
-      raise "VMWare does not support health check URI for SSL" unless options[:health_check_path].nil?
+      raise "vCloud Director does not support health check URI for SSL" unless options[:health_check_path].nil?
       defaults = { :enabled => true, :health_check_path => "", :port => 443, :health_check_mode => "SSL" }
       options = defaults.merge(options)
       @current_pool[:ports] << { :port => options[:port], :health_check_port => options[:health_check_port], # Health check path (URI) not supported for SSL
