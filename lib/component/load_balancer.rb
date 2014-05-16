@@ -40,11 +40,12 @@ module Component
     end
 
     def https(options = {})
-      defaults = { :enabled => true, :health_check_path => "/", :port => 443, :health_check_mode => "SSL" }
+      raise "vCloud Director does not support health check URI for SSL" unless options[:health_check_path].nil?
+      defaults = { :enabled => true, :health_check_path => "", :port => 443, :health_check_mode => "SSL" }
       options = defaults.merge(options)
-      @current_pool[:ports] << { :port => options[:port], :health_check_port => options[:health_check_port],
-                                 :health_check_path => options[:health_check_path], :enabled => options[:enabled],
-                                 :type => :https, :health_check_mode => options[:health_check_mode] }
+      @current_pool[:ports] << { :port => options[:port], :health_check_port => options[:health_check_port], # Health check path (URI) not supported for SSL
+                                 :enabled => options[:enabled], :type => :https,
+                                 :health_check_mode => options[:health_check_mode] }
     end
 
     def load_balances(port, options = {})

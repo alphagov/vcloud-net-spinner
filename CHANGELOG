@@ -1,3 +1,8 @@
+0.2.0 2014-05-12
+
+ - Raise an error if a healthcheck URI is set for healthchecks using protocols
+   other than HTTP.
+
 0.1.6 2014-02-04
 
  - Print the HTTP response body from the vCloud endpoint to aid
