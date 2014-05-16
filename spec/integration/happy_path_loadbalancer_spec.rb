@@ -76,7 +76,7 @@ def configure_lb_xml
         <HealthCheckPort/>
         <HealthCheck>
           <Mode>SSL</Mode>
-          <Uri>/</Uri>
+          <Uri></Uri>
           <HealthThreshold>2</HealthThreshold>
           <UnhealthThreshold>3</UnhealthThreshold>
           <Interval>5</Interval>
