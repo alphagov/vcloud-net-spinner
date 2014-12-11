@@ -1,3 +1,10 @@
+# DEPRECATION NOTICE
+
+This software is old and while it served it's purpose it is no-longer being updated.
+
+The replacement is a suite of ruby gems called [vcloud-tools](http://rubygems.org/gems/vcloud-tools) and you should definitely check those out instead.
+
+
 # Vcloud Network Configurator
 
 This is ruby gem which provides a dsl to configure firewall, nat and
